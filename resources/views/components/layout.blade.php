@@ -31,6 +31,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment-with-locales.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="js/master-sources.js"></script>
+    <script src="js/fetch-sources.js"></script>
+    <script src="js/fetch-by-source.js"></script>
     <script src="js/fetch-home.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/script.js"></script>
