@@ -19,7 +19,11 @@
                 <a href="/news" class="font-medium text-m text-blue-500 hover:underline">&laquo; Back to all news</a>
                 <address class="flex items-center my-6 not-italic">
                     <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                        <img class="mr-4 w-16 h-16 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="{{$news->author->name}}">
+                        @if ($news->author->photo)
+                        <img class="mr-4 w-16 h-16 rounded-full" src="{{ asset('storage/' . $news->author->photo) }}" alt="{{$news->author->name}}">
+                            @else
+                            <img class="mr-4 w-16 h-16 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="{{$news->author->name}}">
+                            @endif
                         <div>
                             <a href="/news?author={{ $news->author->username }}" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">{{ $news->author->name }}</a>
                             <p class="text-base text-gray-500 dark:text-gray-400 mb-1">{{ $news->created_at->diffForHumans() }}</p>

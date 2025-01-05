@@ -48,7 +48,7 @@
   @if (session()->has('create'))
   Swal.fire({
   icon: "success",
-  title: "News created successfully.",
+  title: "Created successfully.",
   showConfirmButton: false,
   timer: 1500
 });
@@ -57,7 +57,7 @@
   @if (session()->has('update'))
   Swal.fire({
   icon: "success",
-  title: "News updated successfully.",
+  title: "Updated successfully.",
   showConfirmButton: false,
   timer: 1500
 });
@@ -81,10 +81,11 @@
   @if (session()->has('delete'))
   Swal.fire({
       title: "Deleted!",
-      text: "News deleted successfully.",
+      text: "Deleted successfully.",
       icon: "success"
     });
     @endif
+
 </script>
   </body>
 </html>

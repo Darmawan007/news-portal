@@ -21,7 +21,7 @@ class News extends Model
 
         protected $with = ['author', 'category'];
     public function author():BelongsTo{
-        return $this->belongsTo(User::class);  // Assuming User model has 'id' as primary key and 'author_id' as foreign key
+        return $this->belongsTo(User::class, 'author_id');  // Assuming User model has 'id' as primary key and 'author_id' as foreign key
     }
     public function category():BelongsTo{
         return $this->belongsTo(Category::class);  // Assuming Comment model has 'id' as primary key and 'news_id' as foreign key

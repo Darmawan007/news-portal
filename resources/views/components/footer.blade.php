@@ -3,7 +3,7 @@
       <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0 text-white">
               <a href="" class="flex items-center">
-                  <img src="storage/news-images/Winnicode.png" class="mr-3 h-8" alt="FlowBite Logo" />
+                  <img src="{{asset('storage/news-images/Winnicode.png')}}" class="mr-3 h-8" alt="FlowBite Logo" />
                   <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">News Portal</span>
               </a>
           </div>

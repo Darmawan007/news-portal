@@ -1,16 +1,18 @@
 <?php
 
-use App\Http\Controllers\AdminUserController;
 use App\Models\News;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\DashboardNewsController;
+use App\Http\Controllers\DashboardProfileController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
-use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -35,6 +37,10 @@ Route::get('/contact', function () {
     return view('contact',['title' => 'Contact']);
 });
 
+Route::get('/source', function () {
+    return view('source',['title' => 'Sources']);
+});
+
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
@@ -43,12 +49,31 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/dashboard', function(){
-    return view('dashboard.index');
+Route::get('/dashboard', function () {
+    $user = auth()->user();
+
+    // Hitung jumlah berita berdasarkan author_id
+    $myNewsCount = News::where('author_id', $user->id)->count();
+
+    // Untuk admin
+    $allNewsCount = News::count();
+    $allUsersCount = \App\Models\User::count();
+    $allCategoriesCount = \App\Models\Category::count();
+
+    return view('dashboard.index', [
+        'myNewsCount' => $myNewsCount,
+        'allNewsCount' => $allNewsCount,
+        'allUsersCount' => $allUsersCount,
+        'allCategoriesCount' => $allCategoriesCount
+    ]);
 })->middleware('auth');
 
 Route::get('/dashboard/news/checkSlug', [DashboardNewsController::class, 'checkSlug'])->middleware('auth');
 
+Route::resource('/dashboard/profile', DashboardProfileController::class)->middleware('auth');
+
 Route::resource('/dashboard/news', DashboardNewsController::class)->middleware('auth');
 
 Route::resource('/dashboard/users', AdminUserController::class)->except('show')->middleware('admin');
+
+Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');

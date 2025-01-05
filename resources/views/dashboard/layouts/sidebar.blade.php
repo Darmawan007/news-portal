@@ -8,6 +8,12 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/profile*') ? 'active' : ''}}" aria-current="page" href="/dashboard/profile">
+          <span data-feather="user"></span>
+          My Profile
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link {{ Request::is('dashboard/news*') ? 'active' : ''}}" href="/dashboard/news">
           <span data-feather="file-text"></span>
           My News
@@ -24,6 +30,12 @@
         <a class="nav-link {{ Request::is('dashboard/users*') ? 'active' : ''}}" href="/dashboard/users">
           <span data-feather="users"></span>
           Users
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : ''}}" href="/dashboard/categories">
+          <span data-feather="list"></span>
+          News Categories
         </a>
       </li>
     </ul>

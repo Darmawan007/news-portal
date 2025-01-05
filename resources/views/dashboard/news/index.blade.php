@@ -5,7 +5,7 @@
   <h1 class="h2">My News</h1>
 </div>
 
-<div class="table-responsive">
+<div class="table-responsive col-lg-8">
   <a href="/dashboard/news/create" class="btn btn-primary mb-3">Create new News</a>
   <table class="table table-striped table-sm">
     <thead>

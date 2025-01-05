@@ -50,7 +50,11 @@
                     <div class="flex justify-between items-center">
                         <a href="/news?author={{ $news->author->username }}">
                         <div class="flex items-center space-x-3">
+                            @if ($news->author->photo)
+                            <img class="w-7 h-7 rounded-full" src="{{ asset('storage/' . $news->author->photo) }}" alt="{{$news->author->name}}" />
+                            @else
                             <img class="w-7 h-7 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="{{$news->author->name}}" />
+                            @endif
                                 <span class="font-medium text-sm dark:text-white">
                                     {{ $news->author->name }}
                                 </span>

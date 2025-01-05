@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->string('title');
-            $table->foreignId('author_id')->constrained(
+            $table->foreignId('author_id')->references('id')->on('users')->onDelete('cascade')->constrained(
                 table: 'users', indexName: 'news_author_id'
             );
             $table->foreignId('category_id')->constrained(
